@@ -36,11 +36,11 @@ const mapInfoDiv = document.getElementById('mapInfo');
 // MQTTブローカーのURL
 const mqttBrokerUrl = "wss://a942597f.ala.asia-southeast1.emqxsl.com:8084/mqtt";
 const subscribeTopic = "player/telemetry/#";
-const posScaleX = 4.4;
-const posScaleY = -4.4;
-const posOffsetX = 62;
-const posOffsetY = 66;
-const rotOffsetY = -120;
+const posScaleX = -1.33;
+const posScaleY = 1.33;
+const posOffsetX = 47.5;
+const posOffsetY = 65;
+const rotOffsetY = -55;
 const mqttBrokerID = "tyffon_mirrorge";
 const mqttBrokerPW = "tyffon1111";
 const userAgentID = navigator.userAgent + "_" + new Date().getTime();
@@ -285,9 +285,9 @@ function onMessageArrived(message) {
 const rawX = (telemetry.posX * posScaleX) + posOffsetX;
 const rawY = (telemetry.posY * posScaleY) + posOffsetY;
 const rotated = applyRotationOffset(rawX, rawY, rotOffsetY, posOffsetX, posOffsetY);
-const x = rotated.x;
+const x = rotated.x * 1.1;
 const y = rotated.y;
-const rotation = telemetry.angle + rotOffsetY;
+const rotation = telemetry.angle + rotOffsetY + 180;
 
 if (!players[userId]) {
     playerCount++;

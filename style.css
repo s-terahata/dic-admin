@@ -16,13 +16,13 @@ body {
 }
 
 #map {
-    width: 234px; /* 固定幅 */
-    height: 342px; /* 固定高さ */
+    width: 359px; /* 固定幅 */
+    height: 716px; /* 固定高さ */
     position: absolute;
     background: url('map.png') no-repeat center center;
     background-size: contain; /* 固定サイズで表示 */
-    left: 50%; /* 中心に配置 */
-    top: 50%; /* 中心に配置 */
+    left: 40%; /* 中心に配置 */
+    top: 90%; /* 中心に配置 */
     transform: translate(-30%, -90%); /* 地図の中心をウィンドウの中心に合わせる */
     cursor: grab;
 }
