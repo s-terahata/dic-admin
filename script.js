@@ -36,11 +36,11 @@ const mapInfoDiv = document.getElementById('mapInfo');
 // MQTTブローカーのURL
 const mqttBrokerUrl = "wss://a942597f.ala.asia-southeast1.emqxsl.com:8084/mqtt";
 const subscribeTopic = "player/telemetry/#";
-const posScaleX = -1.33;
-const posScaleY = 1.33;
-const posOffsetX = 47.5;
-const posOffsetY = 65;
-const rotOffsetY = -55;
+const posScaleX = 4.4;
+const posScaleY = -4.4;
+const posOffsetX = 62;
+const posOffsetY = 66;
+const rotOffsetY = -120;
 const mqttBrokerID = "tyffon_mirrorge";
 const mqttBrokerPW = "tyffon1111";
 const userAgentID = navigator.userAgent + "_" + new Date().getTime();
@@ -59,19 +59,15 @@ function getLastThreeDigits(label) {
 function getSequenceName(seconds) {
     if (seconds <= 0) {
         return "カートタッチ前";
-    } else if (seconds <= 145) {
-        return "チュートリアル";
-    } else if (seconds <= 380) {
+    } else if (seconds <= 450) {
         return "フリーローム";
-    } else if (seconds >= 370 && seconds <= 389) {
-        return "魔法陣待機中";
-    } else if(seconds <= 490) {
+    } else if(seconds <= 470) {
         return "ドラゴン襲来";
-    } else if(seconds <= 700) {
-        return "ドラゴン戦";
-    } else if(seconds < 900) {
+    } else if(seconds <= 726) {
+        return "空中戦";
+    } else if(seconds < 780) {
         return "エンディング";
-    } else if (seconds <= 1500) {
+    } else if (seconds <= 3000) {
         return "体験終了";
     }
 
@@ -285,9 +281,9 @@ function onMessageArrived(message) {
 const rawX = (telemetry.posX * posScaleX) + posOffsetX;
 const rawY = (telemetry.posY * posScaleY) + posOffsetY;
 const rotated = applyRotationOffset(rawX, rawY, rotOffsetY, posOffsetX, posOffsetY);
-const x = rotated.x * 1.1;
+const x = rotated.x;
 const y = rotated.y;
-const rotation = telemetry.angle + rotOffsetY + 180;
+const rotation = telemetry.angle + rotOffsetY;
 
 if (!players[userId]) {
     playerCount++;
