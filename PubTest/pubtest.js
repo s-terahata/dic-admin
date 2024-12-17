@@ -8,7 +8,7 @@ const pollingList = document.getElementById('pollingList')
 const userAgentID = navigator.userAgent + "_" + new Date().getTime();
 const encoder = new TextEncoder();
 
-const brokerUrl = "wss://m8f92daf.ala.asia-southeast1.emqxsl.com:8084/mqtt"
+const brokerUrl = "wss://a942597f.ala.asia-southeast1.emqxsl.com:8084/mqtt"
 const topicRoot = "player/telemetry/"
 
 // ƒ|[ƒŠƒ“ƒO‚ÌŠÔŠu[ms]
